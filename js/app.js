@@ -116,10 +116,10 @@ function descuento(total,productos){
 }
 
 function estadisticas(tot, contadorCompras, acumuDescuentos){
-    op = parseInt(prompt("Ingrese una opcion segun la estadistica que quiera ver\n 1-Total de todas las compras\n 2-Promedio gastado por compra\n 3-Cantidad de compras\n 4-Cantidad de dinero que no se recaudo por los descuentos\n 5-Promedio de la cantidad de dinero perdido por descuentos por compra"))
+    op = parseInt(prompt("Ingrese una opcion segun la estadistica que quiera ver\n 1-Total de todas las cuentas\n 2-Promedio gastado por compra\n 3-Cantidad de compras\n 4-Cantidad de dinero que no se recaudo por los descuentos\n 5-Promedio de la cantidad de dinero perdido por descuentos por compra"))
     switch (op) {
         case 1:
-            alert("El total de todas las compras es: " + tot)
+            alert("El total de todas las cuentas es: " + tot)
             break
 
         case 2:
