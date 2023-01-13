@@ -8,11 +8,12 @@ function menuPrincipal(){
     let cantUsoFuncion = 0
     let acumuladorDesc = 0
     let totAPagar = 0
+    const productos = []
 
     alert("Bienvenido al almacen Lorenzo")
 
     do {
-        opcion = parseInt(prompt("Ingrese una opcion:\n 1-Realizar una compra\n 2-Cerrar una cuenta\n 3-Ver estadistias\n 4-Salir"))
+        opcion = parseInt(prompt("Ingrese una opcion:\n 1-Realizar una compra\n 2-Cerrar una cuenta\n 3-Ver estadistias\n 4-Cargar un producto\n 5-Salir"))
         
         switch (opcion) {
             case 1:
@@ -39,6 +40,10 @@ function menuPrincipal(){
                 break
 
             case 4:
+                cargarProducto(productos)
+                break
+
+            case 5:
                 alert("Saliendo...")
                 break
 
@@ -46,7 +51,35 @@ function menuPrincipal(){
                 alert("Opcion incorrecta")
         }
 
-    } while(opcion!=4)
+    } while(opcion!=5)
+    console.log(productos)
+}
+
+function cargarProducto(productos){
+    let producto
+    let seguir
+
+    do
+    {
+        producto = cargandoProducto()
+        productos.push(producto)
+        seguir = prompt("Desea seguir cargando productos? si/no").toUpperCase()
+    } while(seguir == "SI")
+
+    if (seguir != "NO")
+    {
+        alert("Dato incorrecto vuelve al menu principal")
+    }
+}
+
+
+function cargandoProducto(){
+    const producto = new Producto()
+    producto.nombre = prompt("Ingrese el nombre del producto")
+    producto.cantidad = parseInt(prompt("Ingrese la cantidad en stock"))
+    producto.precio = parseFloat(prompt("Ingrese el precio del producto"))
+    producto.marca = prompt("Ingrese la marca del producto")
+    return producto
 }
 
 function comprarProducto(){
