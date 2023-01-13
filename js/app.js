@@ -9,9 +9,7 @@ function menuPrincipal(){
     let acumuladorDesc = 0
     let totAPagar = 0
 
-    alert("HOLA")
     alert("Bienvenido al almacen Lorenzo")
-
 
     do {
         opcion = parseInt(prompt("Ingrese una opcion:\n 1-Realizar una compra\n 2-Cerrar una cuenta\n 3-Ver estadistias\n 4-Salir"))
