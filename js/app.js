@@ -9,6 +9,7 @@ function menuPrincipal(){
     let acumuladorDesc = 0
     let totAPagar = 0
     const productos = []
+    const carrito = []
 
     alert("Bienvenido al almacen Lorenzo")
 
@@ -17,8 +18,8 @@ function menuPrincipal(){
         
         switch (opcion) {
             case 1:
-                compra = comprarProducto()
-                if (compra != 0){
+                comprarProducto(productos, carrito)
+                if (carrito.length != 0){
                     totCuenta = totCuenta + compra
                     contCompra = contCompra + 1
                     cantUsoFuncion = cantUsoFuncion + 1
@@ -26,6 +27,7 @@ function menuPrincipal(){
                 break
 
             case 2:
+                console.log(carrito)
                 totAPagar = totCuenta * descuento(totCuenta,cantUsoFuncion)
                 alert("El descuento que se le hizo es de: " + (totCuenta - totAPagar))
                 alert("El total a pagar es: " + totAPagar + ". La cuenta se cerro")
@@ -82,36 +84,58 @@ function cargandoProducto(){
     return producto
 }
 
-function comprarProducto(){
+function comprarProducto(productos,carrito){
 
     let producto
     let total = 0
+    let nombre
 
-    producto = parseInt(prompt("Ingrese una opcion segun el producto que desee:\n 1-Gaseosa\n 2-Fideos\n 3-Galletitas\n 4-Tomate\n 5-Lavandina\n 6-Dentifrico"))
-    switch (producto) {
+    let opcion = parseInt(prompt("Ingrese 1 si desea ver el listado de productos\n Ingrese 2 si desea ingresar el nombre del producto que desea comprar")) 
+
+    switch (opcion) {
         case 1:
-            total=totalProducto(180)
-            break
-        case 2:
-            total=totalProducto(100)
-            break
-        case 3:
-            total=totalProducto(120)
-            break
-        case 4:
-            total=totalProducto(200)
-            break
-        case 5:
-            total=totalProducto(150)
-            break
-        case 6:
-            total=totalProducto(170)
-            break
+            verListado(productos)
+            break;
+    
         default:
-            alert("Opcion incorrecta")
+            break;
     }
 
-    return total
+    nombre = prompt("Ingrese el nombre del producto que desea comprar")
+    let productoEncontrado = productos.find((producto) => {return producto.nombre == nombre}) 
+    if (productoEncontrado  != undefined)
+    {
+        let cantidadStock = parseInt(prompt("Ingrese la cantidad que desea comprar"))
+        if(productoEncontrado.calcularDisponibilidad(cantidadStock))
+        {
+            for (let i = 0; i < cantidadStock; i++) {
+                carrito.push(productoEncontrado)
+            }
+        }
+        else
+        {
+            alert("No se puede realizar la compra debido a que no se dispone del stock")
+        }
+    }
+    else
+    {
+        alert("No se encontro ningun producto con ese nombre")
+    }
+}
+
+function verListado(productos){
+    let counter = 0
+    productos.forEach(producto => {
+        console.log("Producto 1:")
+        mostrarProducto(producto)
+    });
+    alert("Se imprimio el listado por consola")
+}
+
+function mostrarProducto(producto){
+    console.log("nombre: "+producto.nombre)
+    console.log("Precio: "+producto.precio)
+    console.log("Marca: "+producto.marca)
 }
 
 function totalProducto(precio){

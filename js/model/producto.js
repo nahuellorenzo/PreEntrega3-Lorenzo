@@ -37,4 +37,8 @@ class Producto {
         let descu = parseInt(prompt("Ingrese el porcentaje del descuento en numero"))
         return this.precio*descu/100
     }
+
+    calcularDisponibilidad(cantidad){
+        return this.cantidad-cantidad >= 0
+    }
 }
