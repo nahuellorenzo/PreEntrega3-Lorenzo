@@ -16,10 +16,10 @@ class Producto {
     }
 
     //metodos
-    vender() 
+    vender(cant) 
     {
-        this.cantidadVendida = this.cantidadVendida + 1
-        this.cantidad = this.cantidad - 1
+        this.cantidadVendida = this.cantidadVendida + cant
+        this.cantidad = this.cantidad - cant
     }
 
     sumarElIva()
@@ -38,7 +38,7 @@ class Producto {
         return this.precio*descu/100
     }
 
-    calcularDisponibilidad(cantidad){
-        return this.cantidad-cantidad >= 0
+    calcularDisponibilidad(cantidadPedida){
+        return this.cantidad-cantidadPedida >= 0
     }
 }

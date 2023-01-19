@@ -1,0 +1,21 @@
+/* NAVBAR*/
+@use 'variables';
+
+header{
+    position: sticky;
+    top: 0px;
+    z-index: 4;
+    .header__nav__div__logo{
+        height: 50px;
+        width: 50px;
+        background-color: transparent;
+        img{
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
+.color{
+    background-color: variables.$color-dark;
+}

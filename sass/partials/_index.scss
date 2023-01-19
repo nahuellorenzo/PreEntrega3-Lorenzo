@@ -1,0 +1,36 @@
+@use 'variables';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* HOME PAGE*/ /* VISTA MOBILE = MOBILE FIRST*/
+@mixin sizes($width, $height){
+    height: $height;
+    width: $width;
+}
+
+.main{
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    background-color: variables.$color-main;
+    .main__h1{
+        text-align: center;
+        font-size: 3rem;
+        padding-top: 3rem;
+        padding-bottom: 1rem;
+        font-weight: bold;
+        margin: 1rem 1rem 0rem 1rem;
+    }
+}
+
+img{
+    @include sizes(100%, 100%);
+}
+
+.fuente{
+    font-family: variables.$font-roboto;
+}
