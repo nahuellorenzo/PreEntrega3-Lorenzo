@@ -2,9 +2,27 @@ const btnAgregarCant = document.querySelectorAll('.buttonAdd')
 const btnSacarCant = document.querySelectorAll('.buttonSubtract')
 const btnSacarCant1 = document.getElementById('buttonSubtract')
 const cant = document.getElementsByClassName('cant')
-const agregar = document.querySelectorAll('.noselect')
+const agregar = document.getElementsByClassName('noselect')
 const cards = document.getElementsByClassName('cards')
-console.log(cant)
+
+const productos = []
+const carrito = []
+
+window.addEventListener('DOMContentLoaded', getAllProducts)
+
+function getAllProducts(){
+    let id = 0
+    for (const card of cards){
+        let nombre = card.querySelector('h3').textContent
+        let precio = card.querySelectorAll('p')[0].textContent.substring(1,)
+        let litros = card.querySelectorAll('p')[1].textContent
+        card.querySelector('.noselect').dataset.id = id
+        console.log(card)
+        productos.push(new Producto(id,nombre,precio,litros))
+        id++
+    } 
+    console.log(productos)
+}
 
 for (const card of cards){
     console.log(card)
@@ -12,11 +30,23 @@ for (const card of cards){
 } 
 
 for (const boton of agregar){
-    boton.addEventListener('click', () => {
+    boton.addEventListener('click', (e) => {
+        setCarrito(e)
         console.log(boton.parentNode.parentNode)
     })
     /* console.log(card.querySelector('h3').textContent) */
 } 
+
+function setCarrito(e){
+    let id = e.target.parentElement.dataset.id
+    let cant = e.target.parentElement.parentElement.querySelector('p').textContent
+    const prod = productos.find((producto) => { return producto.id === parseInt(id) })
+    carrito.push(new Item(prod, cant))
+    console.log(carrito)
+    console.log(e.target.parentElement.dataset.id)
+    console.log(e.target.parentElement.parentElement.querySelector('p').textContent)
+
+}
 
 for (const botones of btnAgregarCant){
     botones.addEventListener('click', () => {

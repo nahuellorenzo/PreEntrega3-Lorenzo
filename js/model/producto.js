@@ -1,18 +1,16 @@
 class Producto {
+    id;
     nombre;
-    cantidad;
     precio;
-    marca;
-    cantidadVendida;
+    litros;
 
     //Constructor
-    constructor(nombre, cantidad, precio, marca)
+    constructor(id, nombre, precio, litros)
     {
+        this.id = id
         this.nombre = nombre
-        this.cantidad = cantidad
         this.precio = parseFloat(precio)
-        this.marca = marca
-        this.cantidadVendida = 0
+        this.litros = litros
     }
 
     //metodos
