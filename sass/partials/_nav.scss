@@ -14,6 +14,20 @@ header{
             width: 100%;
         }
     }
+    .header-icons{
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        i{
+            color: white;
+            font-size: 1.5rem;
+        }
+    }
+    li{
+        list-style: none;
+        margin-right: 0.5rem;
+    }
 }
 
 .color{

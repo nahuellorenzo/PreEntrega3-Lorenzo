@@ -1,3 +1,55 @@
+const btnAgregarCant = document.querySelectorAll('.buttonAdd')
+const btnSacarCant = document.querySelectorAll('.buttonSubtract')
+const btnSacarCant1 = document.getElementById('buttonSubtract')
+const cant = document.getElementsByClassName('cant')
+const agregar = document.querySelectorAll('.noselect')
+const cards = document.getElementsByClassName('cards')
+console.log(cant)
+
+for (const card of cards){
+    console.log(card)
+    console.log(card.querySelector('h3').textContent)
+} 
+
+for (const boton of agregar){
+    boton.addEventListener('click', () => {
+        console.log(boton.parentNode.parentNode)
+    })
+    /* console.log(card.querySelector('h3').textContent) */
+} 
+
+for (const botones of btnAgregarCant){
+    botones.addEventListener('click', () => {
+        console.log(botones.parentNode.querySelector('p'))
+        botones.parentNode.querySelector('p').textContent = parseInt(botones.parentNode.querySelector('p').textContent) + 1 
+        console.log(botones.parentNode.querySelector('#buttonSubtract'))
+        botones.parentNode.querySelector('#buttonSubtract').disabled = false
+    });
+} 
+
+for (const botones of btnSacarCant){
+    botones.addEventListener('click', () => {
+        console.log(botones.parentNode.querySelector('p'))
+        botones.parentNode.querySelector('p').textContent = parseInt(botones.parentNode.querySelector('p').textContent) - 1 
+        if (botones.parentNode.querySelector('p').textContent === '1') botones.disabled = true
+    });
+} 
+
+
+/* btnAgregarCant1.addEventListener('click', () => {
+    cant.textContent = parseInt(cant.innerText) + 1
+    btnSacarCant.disabled = false
+}); */
+
+/* btnSacarCant.addEventListener('click', () => {
+    cant.textContent = parseInt(cant.textContent) - 1
+    if( cant.textContent === '1') btnSacarCant.disabled = true
+}); */
+
+/* agregar.addEventListener('click', e => {
+    console.log(e.target.parentElement)
+}) */
+
 function menuPrincipal(){
 
     let opcion
@@ -229,4 +281,4 @@ function estadisticas(tot, contadorCompras, acumuDescuentos){
     }
 }
 
-menuPrincipal()
+//menuPrincipal()

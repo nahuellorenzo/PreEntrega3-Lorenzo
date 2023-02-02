@@ -4,7 +4,8 @@
   box-sizing: border-box;
 }
 
-/* HOME PAGE*/ /* VISTA MOBILE = MOBILE FIRST*/
+/* HOME PAGE*/
+/* VISTA MOBILE = MOBILE FIRST*/
 .main {
   height: 100%;
   width: 100%;
@@ -13,11 +14,103 @@
 }
 .main .main__h1 {
   text-align: center;
-  font-size: 3rem;
-  padding-top: 3rem;
+  font-size: 2rem;
+  padding-top: 0.5rem;
   padding-bottom: 1rem;
   font-weight: bold;
   margin: 1rem 1rem 0rem 1rem;
+}
+.main .cards {
+  width: 220px;
+  height: 450px;
+  border-radius: 30px;
+  background: #e0e0e0;
+}
+.main .cards .img {
+  height: 150px;
+  width: 90px;
+}
+.main .cards .add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main .cards .cantidad {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 1rem;
+}
+.main .cards .cantidad .button-container {
+  background: #fff;
+  border: 2px solid #918f8f;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 20px;
+}
+.main .cards .cantidad .button-container i {
+  font-size: 2rem;
+  color: #918f8f;
+}
+.main .cards .cantidad .button-container .svg-inline--fa {
+  display: var(--fa-display, inline-block);
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
+.main .cards .noselect {
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: rgb(39, 233, 104);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+  background: rgb(39, 233, 104);
+}
+.main .cards .noselect,
+.main .cards .noselect span {
+  transition: 200ms;
+}
+.main .cards .noselect .text {
+  transform: translateX(35px);
+  color: white;
+  font-weight: bold;
+}
+.main .cards .noselect .icon {
+  position: absolute;
+  border-left: 1px solid rgb(39, 233, 104);
+  transform: translateX(110px);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main .cards .noselect i {
+  width: 15px;
+  fill: #eee;
+}
+.main .cards .noselect:hover {
+  background: rgb(39, 233, 104);
+}
+.main .cards .noselect:hover .text {
+  color: transparent;
+}
+.main .cards .noselect:hover .icon {
+  width: 150px;
+  border-left: none;
+  transform: translateX(0);
+}
+.main .cards .noselect:focus {
+  outline: none;
+}
+.main .cards .noselect:active .icon i {
+  transform: scale(0.8);
 }
 
 img {
@@ -227,6 +320,20 @@ header .header__nav__div__logo {
 header .header__nav__div__logo img {
   height: 100%;
   width: 100%;
+}
+header .header-icons {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+header .header-icons i {
+  color: white;
+  font-size: 1.5rem;
+}
+header li {
+  list-style: none;
+  margin-right: 0.5rem;
 }
 
 .color {
