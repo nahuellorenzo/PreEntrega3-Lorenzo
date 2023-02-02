@@ -45,7 +45,23 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <table class="table">         
+                        <thead class="thead-dark">
+                            <tr id="trId">
+                                <th># item</th>
+                                <th>Nombre</th>
+                                <th>Precio Unitario</th>
+                                <th>Litros</th>
+                                <th>Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody id="items" class="table-striped">
+                        </tbody>
+                        <tfoot id="tfooter">
+                            <tr id="trTotal">
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
