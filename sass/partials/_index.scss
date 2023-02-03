@@ -13,6 +13,10 @@
     width: $width;
 }
 
+.table>:not(caption)>*>*{
+    padding: .3rem .3rem;
+}
+
 .main {
     height: 100%;
     width: 100%;

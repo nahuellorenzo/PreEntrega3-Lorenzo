@@ -4,11 +4,18 @@ const btnSacarCant1 = document.getElementById('buttonSubtract')
 const cant = document.getElementsByClassName('cant')
 const agregar = document.getElementsByClassName('noselect')
 const cards = document.getElementsByClassName('cards')
+const tbody = document.getElementById('items')
+const trTotal = document.getElementById('trTotal');
 
-const productos = []
-const carrito = []
+let productos = []
+let carrito = []
 
-window.addEventListener('DOMContentLoaded', getAllProducts)
+window.addEventListener('DOMContentLoaded', getAllProductsGetCarrito)
+
+function getAllProductsGetCarrito() {
+    getAllProducts()
+    getCarrito()
+}
 
 function getAllProducts() {
     let id = 0
@@ -17,65 +24,114 @@ function getAllProducts() {
         let precio = card.querySelectorAll('p')[0].textContent.substring(1,)
         let litros = card.querySelectorAll('p')[1].textContent
         card.querySelector('.noselect').dataset.id = id
-        console.log(card)
         productos.push(new Producto(id, nombre, precio, litros))
         id++
     }
     console.log(productos)
 }
 
-for (const card of cards) {
-    console.log(card)
-    console.log(card.querySelector('h3').textContent)
+function getCarrito() {
+    carrito = JSON.parse(localStorage.getItem('carrito'))
+    if (carrito === null) {
+        carrito = []
+    }
+    agregarTabla()
 }
 
 for (const boton of agregar) {
     boton.addEventListener('click', (e) => {
-        setCarrito(e)
+
+        if (e.target.localName === "i") setCarrito(e.target.parentElement)
+        else setCarrito(e.target)
+
         console.log(boton.parentNode.parentNode)
     })
-    /* console.log(card.querySelector('h3').textContent) */
 }
 
 function setCarrito(e) {
-    let id = e.target.parentElement.dataset.id
-    let cant = e.target.parentElement.parentElement.querySelector('p').textContent
+
+    let id = e.parentElement.dataset.id
+    let cant = e.parentElement.parentElement.querySelector('p').textContent
+
     const prod = productos.find((producto) => { return producto.id === parseInt(id) })
-    carrito.push(new Item(prod, cant))
+    const item = carrito.find((item) => { return item.producto.id === prod.id })
+    if (item === undefined) {
+        carrito.push(new Item(prod, cant))
+    }
+    else {
+        item.cantidad = item.cantidad + parseInt(cant)
+    }
     console.log(carrito)
     localStorage.setItem('carrito', JSON.stringify(carrito));
-    console.log(e.target.parentElement.dataset.id)
-    console.log(e.target.parentElement.parentElement.querySelector('p').textContent)
     agregarTabla()
 }
 
 function agregarTabla() {
-    const tbody = document.getElementById('items')
-    const trTotal = document.getElementById('trTotal');
     tbody.innerHTML = ''; ///limpio la tabla
     trTotal.innerHTML = '';
-    let counter = 1;
+    let cont = 1;
     carrito.forEach((item) => {
         tbody.innerHTML +=
             `
-                <tr>
-                 <th scope="row">${counter}</th>
-                 <td> ${item.producto.nombre} </td>
-                 <td> ${item.producto.precio} </td>
-                 <td> ${item.producto.litros} </td>
-                 <td> ${item.cantidad} </td>
-                </tr>`;
-
-        counter++;
+                <tr class="filasItem">
+                    <th class="celdas" scope="row">${cont}</th>
+                    <td class="celdas"> ${item.producto.nombre} </td>
+                    <td class="celdas"> ${item.producto.precio} </td>
+                    <td class="celdas"> ${item.cantidad} </td>
+                    <td class="celdas elim">
+                        <button class="btn btn-danger" id="boton${item.producto.id}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                        </svg></button>
+                </tr>`;    
+        cont++;
     });
+
+    const buttones = document.getElementsByClassName("btn-danger")
+
+    for (const button of buttones) {
+        button.addEventListener('click', (e) => {
+            let id = e.target.id.substring(5)
+            let num = carrito.indexOf(productos.find((producto) => { return producto.id === parseInt(id) }))
+            carrito.splice(num,1)
+            localStorage.setItem('carrito',JSON.stringify(carrito))
+            agregarTabla()
+        })
+    }   
 
     let th = document.createElement('th');
     th.innerText = 'Total:'
     trTotal.appendChild(th)
 
     th = document.createElement('th');
-    th.innerText = carrito.reduce((acumulador, producto) => acumulador + producto.producto.precio*producto.cantidad, 0);
+    th.innerText = carrito.reduce((acumulador, producto) => acumulador + producto.producto.precio * producto.cantidad, 0);
     trTotal.appendChild(th);
+}
+
+function newRow(cont){
+    const btnEliminar = document.createElement('button');
+                btnEliminar.className = 'btn btn-danger';
+                btnEliminar.innerText = 'Eliminar';
+
+                console.log(btnEliminar)
+               
+                btnEliminar.onclick = () =>
+                {
+                    console.log(btnEliminar)
+                    console.log("boton")
+                   carrito.splice(cont-1,1); ///elimino ese elemento en esa posicion
+                   localStorage.setItem('carrito',JSON.stringify(carrito)); //actualizo localStorage
+                   agregarTabla();
+                }
+               
+                ///agrego el boton a una celda
+                td = document.getElementsByClassName('elim')[cont-1];
+                td.appendChild(btnEliminar);
+                document.getElementsByClassName('filasItem')[cont-1].appendChild(td)
+}
+
+function findProduct(id) {
+    return productos.find((producto) => { return producto.id === parseInt(id) })
 }
 
 for (const botones of btnAgregarCant) {
