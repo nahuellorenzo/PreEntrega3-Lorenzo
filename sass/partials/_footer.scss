@@ -17,7 +17,7 @@ footer{
 }
 
 $redes: (
-    twitter: #1DA1F2,
+    twitter: #25D366,
     facebook: #1877F2,
     instagram: #E4405F
 );
@@ -53,6 +53,10 @@ footer{
         }
         .footer__redes{
             grid-area: redes;
+            i{
+                font-size: 2.1rem;
+                color: #bdf95d;
+            }
         }
         .wrapper {
             display: flex;
@@ -125,7 +129,7 @@ footer{
         }
         .footer__aclaracion{
             width: 100%;
-            color: variables.$color-main;
+            color: #bdf95d;
             padding: 0rem 1.5rem 1.5rem 1.5rem;
             font-size: 0.8rem;
             grid-area: descripcion;

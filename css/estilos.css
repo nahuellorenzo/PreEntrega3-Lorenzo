@@ -7,7 +7,7 @@
 /* HOME PAGE*/
 /* VISTA MOBILE = MOBILE FIRST*/
 .table > :not(caption) > * > * {
-  padding: 0.3rem 0.3rem;
+  padding: 0.2rem 0.2rem;
 }
 
 .main {
@@ -23,12 +23,21 @@
   padding-bottom: 1rem;
   font-weight: bold;
   margin: 1rem 1rem 0rem 1rem;
+  color: rgb(11, 24, 40);
+}
+.main article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .main .cards {
   width: 220px;
   height: 450px;
   border-radius: 30px;
-  background: #e0e0e0;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .main .cards .img {
   height: 150px;
@@ -43,26 +52,24 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   padding: 1rem;
 }
+.main .cards .cantidad p {
+  margin: 0;
+  margin-top: 0.5rem;
+  font-size: 1.3rem;
+  font-family: "Roboto", sans-serif;
+}
 .main .cards .cantidad .button-container {
-  background: #fff;
-  border: 2px solid #918f8f;
-  border-radius: 15px;
-  cursor: pointer;
-  font-size: 15px;
-  line-height: 20px;
+  border: none;
+  background-color: white;
 }
 .main .cards .cantidad .button-container i {
   font-size: 2rem;
-  color: #918f8f;
 }
-.main .cards .cantidad .button-container .svg-inline--fa {
-  display: var(--fa-display, inline-block);
-  height: 1em;
-  overflow: visible;
-  vertical-align: -0.125em;
+.main .cards .cantidad .button-container i .buttonAdd {
+  color: black;
 }
 .main .cards .noselect {
   width: 150px;
@@ -70,11 +77,10 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  background: rgb(39, 233, 104);
+  background: #bdf95d;
   border: none;
   border-radius: 5px;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
-  background: rgb(39, 233, 104);
+  background: #bdf95d;
 }
 .main .cards .noselect,
 .main .cards .noselect span {
@@ -82,12 +88,12 @@
 }
 .main .cards .noselect .text {
   transform: translateX(35px);
-  color: white;
+  color: black;
   font-weight: bold;
 }
 .main .cards .noselect .icon {
   position: absolute;
-  border-left: 1px solid rgb(39, 233, 104);
+  border-left: 1px solid #bdf95d;
   transform: translateX(110px);
   height: 40px;
   width: 40px;
@@ -100,7 +106,7 @@
   fill: #eee;
 }
 .main .cards .noselect:hover {
-  background: rgb(39, 233, 104);
+  background: #bdf95d;
 }
 .main .cards .noselect:hover .text {
   color: transparent;
@@ -115,6 +121,10 @@
 }
 .main .cards .noselect:active .icon i {
   transform: scale(0.8);
+}
+
+.modal-content {
+  background-color: rgb(11, 24, 40);
 }
 
 img {
@@ -143,7 +153,7 @@ footer {
 }
 
 footer {
-  background-color: rgb(42, 43, 46);
+  background-color: rgb(11, 24, 40);
   width: 100%;
   overflow: auto;
   overflow-x: hidden;
@@ -173,6 +183,10 @@ footer .grilla .footer__logo img {
 footer .grilla .footer__redes {
   grid-area: redes;
 }
+footer .grilla .footer__redes i {
+  font-size: 2.1rem;
+  color: #bdf95d;
+}
 footer .grilla .wrapper {
   display: flex;
   flex-direction: row;
@@ -185,7 +199,7 @@ footer .grilla .wrapper {
 }
 footer .grilla .wrapper .icon {
   position: relative;
-  background: rgb(42, 43, 46);
+  background: rgb(11, 24, 40);
   border-radius: 50%;
   margin: 10px;
   width: 50px;
@@ -237,7 +251,7 @@ footer .grilla .wrapper .icon:hover .tooltip {
 footer .grilla .wrapper .twitter:hover,
 footer .grilla .wrapper .twitter:hover .tooltip,
 footer .grilla .wrapper .twitter:hover .tooltip::before {
-  background-color: #1DA1F2;
+  background-color: #25D366;
   color: #fff;
 }
 footer .grilla .wrapper .facebook:hover,
@@ -254,7 +268,7 @@ footer .grilla .wrapper .instagram:hover .tooltip::before {
 }
 footer .grilla .footer__aclaracion {
   width: 100%;
-  color: rgb(240, 247, 238);
+  color: #bdf95d;
   padding: 0rem 1.5rem 1.5rem 1.5rem;
   font-size: 0.8rem;
   grid-area: descripcion;
@@ -332,7 +346,7 @@ header .header-icons {
   align-items: center;
 }
 header .header-icons i {
-  color: white;
+  color: #bdf95d;
   font-size: 1.5rem;
 }
 header li {
@@ -342,9 +356,12 @@ header li {
 header ul {
   height: 30px;
 }
+header .navbar-brand {
+  color: #bdf95d;
+}
 
 .color {
-  background-color: rgb(42, 43, 46);
+  background-color: rgb(11, 24, 40);
 }
 
 /*# sourceMappingURL=estilos.css.map */

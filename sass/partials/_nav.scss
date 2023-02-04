@@ -20,7 +20,7 @@ header{
         flex-direction: row;
         align-items: center;
         i{
-            color: white;
+            color: #bdf95d;
             font-size: 1.5rem;
         }
     }
@@ -31,8 +31,11 @@ header{
     ul{
         height: 30px;
     }
+    .navbar-brand{
+        color:#bdf95d;
+    }
 }
 
 .color{
-    background-color: variables.$color-dark;
+    background-color: rgb(11 24 40);
 }
