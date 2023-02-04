@@ -77,7 +77,7 @@ function agregarTabla() {
                     <td class="celdas"> ${item.producto.precio} </td>
                     <td class="celdas"> ${item.cantidad} </td>
                     <td class="celdas elim">
-                        <button class="btn btn-danger" id="boton${item.producto.id} data-id="${item.producto.id}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                        <button class="btn btn-danger" id="boton${item.producto.id}" data-id="${item.producto.id}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                         <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                         </svg></button>
@@ -92,7 +92,8 @@ function agregarTabla() {
             elem = encontrarElemento(e,"path","svg")
             id = elem.dataset.id
             console.log(id)
-            let num = carrito.indexOf(productos.find((producto) => { return producto.id === parseInt(id) }))
+            let num = carrito.indexOf(carrito.find((producto) => { return producto.producto.id === parseInt(id) }))
+            console.log(num)
             carrito.splice(num, 1)
             localStorage.setItem('carrito', JSON.stringify(carrito))
             agregarTabla()
@@ -151,9 +152,17 @@ for (const botones of btnSacarCant) {
 }
 
 function encontrarElemento(e,elemento1,elemento2) {
-    if (e.target.localName === elemento1) return e.target.parentElement.parentElement
-    else if (e.target.localName === elemento2) return e.target.parentElement
-    else return e.target
+    if (e.target.localName === elemento1){
+        console.log(e)
+        return e.target.parentElement.parentElement
+    } 
+    else if (e.target.localName === elemento2){
+        console.log(e)
+        return e.target.parentElement
+    } 
+    else{
+        console.log(e) 
+        return e.target}
 }
 
 /* btnAgregarCant1.addEventListener('click', () => {
