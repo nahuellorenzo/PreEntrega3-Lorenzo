@@ -330,12 +330,12 @@ header {
   top: 0px;
   z-index: 4;
 }
-header .header__nav__div__logo {
-  height: 50px;
-  width: 50px;
+header .div__logo {
+  height: 60px;
+  width: 60px;
   background-color: transparent;
 }
-header .header__nav__div__logo img {
+header .div__logo img {
   height: 100%;
   width: 100%;
 }
