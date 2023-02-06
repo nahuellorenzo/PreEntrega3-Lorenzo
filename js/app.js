@@ -130,9 +130,10 @@ function newRow(cont) {
     document.getElementsByClassName('filasItem')[cont - 1].appendChild(td)
 }
 
-function findProduct(id) {
+/* function findProduct(id) {
     return productos.find((producto) => { return producto.id === parseInt(id) })
 }
+ */
 
 for (const botones of btnAgregarCant) {
     botones.addEventListener('click', () => {
@@ -164,3 +165,9 @@ function encontrarElemento(e,elemento1,elemento2) {
         console.log(e) 
         return e.target}
 }
+
+const body = document.getElementById("body")
+
+body.addEventListener("dblclick", (e) => {
+    e.preventDefault()
+})
