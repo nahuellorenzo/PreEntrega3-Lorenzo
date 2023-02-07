@@ -180,6 +180,12 @@ footer .grilla .footer__logo img {
   height: 100%;
   width: 100%;
 }
+footer .grilla .footer__logo .imagen1 {
+  display: block;
+}
+footer .grilla .footer__logo .imagen2 {
+  display: none;
+}
 footer .grilla .footer__redes {
   grid-area: redes;
 }
@@ -284,11 +290,17 @@ footer .grilla .footer__aclaracion {
     justify-items: flex-start;
   }
   footer .grilla .footer__logo {
-    height: 100px;
-    width: 100px;
+    height: 65px;
+    width: 200px;
     grid-area: logo;
     background-color: transparent;
-    margin-top: 20px;
+    margin-top: 30px;
+  }
+  footer .grilla .footer__logo .imagen1 {
+    display: none;
+  }
+  footer .grilla .footer__logo .imagen2 {
+    display: block;
   }
   footer .grilla .footer__redes {
     grid-area: redes;
@@ -331,13 +343,19 @@ header {
   z-index: 4;
 }
 header .div__logo {
-  height: 60px;
-  width: 60px;
+  height: 50px;
+  width: 50px;
   background-color: transparent;
 }
 header .div__logo img {
   height: 100%;
   width: 100%;
+}
+header .div__logo .imagen1 {
+  display: block;
+}
+header .div__logo .imagen2 {
+  display: none;
 }
 header .header-icons {
   height: 100%;
@@ -362,6 +380,20 @@ header .navbar-brand {
 
 .color {
   background-color: rgb(11, 24, 40);
+}
+
+/* DESKTOP */
+@media screen and (min-width: 1024px) {
+  header .div__logo {
+    height: 50px;
+    width: 209px;
+  }
+  header .div__logo .imagen1 {
+    display: none;
+  }
+  header .div__logo .imagen2 {
+    display: block;
+  }
 }
 
 /*# sourceMappingURL=estilos.css.map */
