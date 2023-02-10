@@ -126,6 +126,11 @@
 .modal-content {
   background-color: rgb(11, 24, 40);
 }
+.modal-content .modal-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
 img {
   height: 100%;

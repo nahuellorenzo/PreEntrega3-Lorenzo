@@ -147,7 +147,13 @@
 }
 
 .modal-content{
-    background-color: variables.$color-dark
+    background-color: variables.$color-dark;
+    
+    .modal-footer{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
 
 img {

@@ -1,11 +1,11 @@
 const btnAgregarCant = document.querySelectorAll('.buttonAdd')
 const btnSacarCant = document.querySelectorAll('.buttonSubtract')
-const btnSacarCant1 = document.getElementById('buttonSubtract')
-const cant = document.getElementsByClassName('cant')
 const agregar = document.getElementsByClassName('noselect')
 const cards = document.getElementsByClassName('cards')
 const tbody = document.getElementById('items')
 const trTotal = document.getElementById('trTotal');
+const btnVaciar = document.getElementById("vaciar")
+const body = document.getElementById("body")
 
 let productos = []
 let carrito = []
@@ -77,7 +77,7 @@ function agregarTabla() {
                     <td class="celdas text-center"> ${item.producto.precio} </td>
                     <td class="celdas text-center"> ${item.cantidad} </td>
                     <td class="celdas elim text-center">
-                        <button class="btn btn-danger" id="boton${item.producto.id}" data-id="${item.producto.id}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                        <button class="btn btn-danger trash" id="boton${item.producto.id}" data-id="${item.producto.id}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                         <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                         </svg></button>
@@ -85,7 +85,7 @@ function agregarTabla() {
         cont++;
     });
 
-    const buttones = document.getElementsByClassName("btn-danger")
+    const buttones = document.getElementsByClassName("trash")
 
     for (const button of buttones) {
         button.addEventListener('click', (e) => {
@@ -109,27 +109,6 @@ function agregarTabla() {
     trTotal.appendChild(th);
 }
 
-function newRow(cont) {
-    const btnEliminar = document.createElement('button');
-    btnEliminar.className = 'btn btn-danger';
-    btnEliminar.innerText = 'Eliminar';
-
-    console.log(btnEliminar)
-
-    btnEliminar.onclick = () => {
-        console.log(btnEliminar)
-        console.log("boton")
-        carrito.splice(cont - 1, 1); ///elimino ese elemento en esa posicion
-        localStorage.setItem('carrito', JSON.stringify(carrito)); //actualizo localStorage
-        agregarTabla();
-    }
-
-    ///agrego el boton a una celda
-    td = document.getElementsByClassName('elim')[cont - 1];
-    td.appendChild(btnEliminar);
-    document.getElementsByClassName('filasItem')[cont - 1].appendChild(td)
-}
-
 for (const botones of btnAgregarCant) {
     botones.addEventListener('click', () => {
         console.log(botones.parentNode.querySelector('p'))
@@ -147,6 +126,13 @@ for (const botones of btnSacarCant) {
     });
 }
 
+btnVaciar.addEventListener('click', (e) => {
+    e.preventDefault()
+    carrito.splice(0,)
+    localStorage.setItem('carrito', JSON.stringify(carrito))
+    agregarTabla()
+})
+
 function encontrarElemento(e,elemento1,elemento2) {
     if (e.target.localName === elemento1){
         console.log(e)
@@ -161,8 +147,6 @@ function encontrarElemento(e,elemento1,elemento2) {
         return e.target}
 }
 
-const body = document.getElementById("body")
-
-body.addEventListener("dblclick", (e) => {
+body.addEventListener('dblclick', (e) => {
     e.preventDefault()
 })
