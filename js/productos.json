@@ -29,52 +29,52 @@
     },
     {
         "id": 5,
-        "nombre": "Smirnoff Raspberry",
+        "nombre": "Aboslut Mango",
         "precio": 900,
         "litros": "750ml",
-        "img": "./img/smf_21_685x1200.jpg"
+        "img": "https://www.absolut.com/globalassets/images/products/absolut-mango/absolut-mango_1000ml4x.jpg?imwidth=300"
     },
     {
         "id": 6,
-        "nombre": "Smirnoff Citrus",
+        "nombre": "Aboslut Elyx",
         "precio": 700,
-        "litros": "750ml",
-        "img": "https://www.espaciovino.com.ar/media/default/0001/58/thumb_57267_default_big.jpeg"
+        "litros": "1000ml",
+        "img": "https://www.absolut.com/globalassets/images/products/absolut-elyx/absolut-elyx_1000ml4x.jpg?imwidth=300"
     },
     {
         "id": 7,
-        "nombre": "Smirnoff Watermelon",
+        "nombre": "Aboslut Extrakt",
         "precio": 900,
         "litros": "750ml",
-        "img": "https://www.vinosyspirits.com/media/catalog/product/s/m/smf_watermelon_685x1200.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=&width=&canvas=:"
+        "img": "https://www.absolut.com/globalassets/images/products/absolut-extrakt/absolut-extrakt_1000ml4x.jpg?imwidth=300"
     },
     {
         "id": 8,
-        "nombre": "Smirnoff Raspberry",
+        "nombre": "Absolut Vanilia",
         "precio": 900,
         "litros": "750ml",
-        "img": "./img/smf_21_685x1200.jpg"
+        "img": "https://www.absolut.com/globalassets/images/products/absolut-vanilia/absolut-vanilia_1000ml4x.jpg"
     },
     {
         "id": 9,
-        "nombre": "Smirnoff Raspberry",
+        "nombre": "Absolut Lime",
         "precio": 900,
         "litros": "750ml",
-        "img": "./img/smf_21_685x1200.jpg"
+        "img": "https://www.absolut.com/globalassets/images/products/absolut-lime/absolut-lime_1000ml4x.jpg?imwidth=300"
     },
     {
         "id": 10,
-        "nombre": "Smirnoff Citrus",
+        "nombre": "Jack Daniel's Old No. 7",
         "precio": 700,
         "litros": "750ml",
-        "img": "https://www.espaciovino.com.ar/media/default/0001/58/thumb_57267_default_big.jpeg"
+        "img": "./img/jack-daniels-old-750.webp"
     },
     {
         "id": 11,
-        "nombre": "Smirnoff Watermelon",
+        "nombre": "Fernet Branca",
         "precio": 900,
         "litros": "750ml",
-        "img": "https://www.vinosyspirits.com/media/catalog/product/s/m/smf_watermelon_685x1200.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=&width=&canvas=:"
+        "img": "./img/fernetbranca.png"
     },
     {
         "id": 12,
