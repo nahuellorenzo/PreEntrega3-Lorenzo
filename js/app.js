@@ -1,26 +1,25 @@
-const btnAgregarCant = document.querySelectorAll('.buttonAdd')
-const btnSacarCant = document.querySelectorAll('.buttonSubtract')
 const agregar = document.getElementsByClassName('noselect')
 const cards = document.getElementsByClassName('cards')
 const tbody = document.getElementById('items')
 const trTotal = document.getElementById('trTotal');
 const btnVaciar = document.getElementById("vaciar")
 const body = document.getElementById("body")
-const prodsSection = document.getElementById("items") 
+const prodsSection = document.getElementById("products") 
 
 let productos = []
 let carrito = []
 
-
 window.addEventListener('DOMContentLoaded', getAllProductsGetCarritoJson)
 
 function getAllProductsGetCarritoJson(){
-    fetch("productos.json")
+    fetch("./js/productos.json")
     .then((response) => response.json())
     .then((data) => {
         console.log(data)
+        console.log(prodsSection)
         prodsSection.innerHTML = ''
         data.forEach( (data) => {
+            console.log(data.nombre)
             prodsSection.innerHTML +=
                                         `
                                         <article class="col-md-4 col-lg-3">
@@ -29,7 +28,7 @@ function getAllProductsGetCarritoJson(){
                                                 <img src="${data.img}" alt="">
                                             </div>
                                             <h3 class="fuente text-center">${data.nombre}</h3>
-                                            <p class="fuente">${data.precio}</p>
+                                            <p class="fuente">$${data.precio}</p>
                                             <p class="fuente">${data.litros}</p>
                                             <div class="add">
                                                 <div class="cantidad">
@@ -59,6 +58,7 @@ function getAllProductsGetCarritoJson(){
 function getAllProductsGetCarrito() {
     getAllProducts()
     getCarrito()
+    botonAgregarFuncionalidad()
 }
 
 function getAllProducts() {
@@ -82,12 +82,33 @@ function getCarrito() {
     agregarTabla()
 }
 
-for (const boton of agregar) {
-    boton.addEventListener('click', (e) => {
-        console.log(e)
-        setCarrito(encontrarElemento(e,"i","span"))
-        console.log(boton.parentNode.parentNode)
-    })
+function botonAgregarFuncionalidad(){
+
+    const btnAgregarCant = document.querySelectorAll('.buttonAdd')
+    const btnSacarCant = document.querySelectorAll('.buttonSubtract')
+
+    for (const boton of agregar) {
+        boton.addEventListener('click', (e) => {
+            setCarrito(encontrarElemento(e,"i","span"))
+            console.log(boton.parentNode.parentNode)
+        })
+    }
+
+    for (const botones of btnAgregarCant) {
+        botones.addEventListener('click', () => {
+            botones.parentNode.querySelector('p').textContent = parseInt(botones.parentNode.querySelector('p').textContent) + 1
+            botones.parentNode.querySelector('#buttonSubtract').disabled = false
+        });
+    }
+
+    for (const botones of btnSacarCant) {
+        botones.addEventListener('click', () => {
+            console.log(botones.parentNode.querySelector('p'))
+            botones.parentNode.querySelector('p').textContent = parseInt(botones.parentNode.querySelector('p').textContent) - 1
+            if (botones.parentNode.querySelector('p').textContent === '1') botones.disabled = true
+        });
+    }
+
 }
 
 function setCarrito(e) {
@@ -151,23 +172,6 @@ function agregarTabla() {
     th = document.createElement('th');
     th.innerText = carrito.reduce((acumulador, producto) => acumulador + producto.producto.precio * producto.cantidad, 0);
     trTotal.appendChild(th);
-}
-
-for (const botones of btnAgregarCant) {
-    botones.addEventListener('click', () => {
-        console.log(botones.parentNode.querySelector('p'))
-        botones.parentNode.querySelector('p').textContent = parseInt(botones.parentNode.querySelector('p').textContent) + 1
-        console.log(botones.parentNode.querySelector('#buttonSubtract'))
-        botones.parentNode.querySelector('#buttonSubtract').disabled = false
-    });
-}
-
-for (const botones of btnSacarCant) {
-    botones.addEventListener('click', () => {
-        console.log(botones.parentNode.querySelector('p'))
-        botones.parentNode.querySelector('p').textContent = parseInt(botones.parentNode.querySelector('p').textContent) - 1
-        if (botones.parentNode.querySelector('p').textContent === '1') botones.disabled = true
-    });
 }
 
 btnVaciar.addEventListener('click', (e) => {
