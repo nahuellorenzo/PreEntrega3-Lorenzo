@@ -5,6 +5,7 @@ const trTotal = document.getElementById('trTotal');
 const btnVaciar = document.getElementById("vaciar")
 const body = document.getElementById("body")
 const prodsSection = document.getElementById("products") 
+const input = document.getElementById("inputSearch")
 
 let productos = []
 let carrito = []
@@ -67,8 +68,9 @@ function getAllProducts() {
         let nombre = card.querySelector('h3').textContent
         let precio = card.querySelectorAll('p')[0].textContent.substring(1,)
         let litros = card.querySelectorAll('p')[1].textContent
+        let img = card.querySelector('img').src
         card.querySelector('.noselect').dataset.id = id
-        productos.push(new Producto(id, nombre, precio, litros))
+        productos.push(new Producto(id, nombre, precio, litros,img))
         id++
     }
     console.log(productos)
@@ -197,4 +199,44 @@ function encontrarElemento(e,elemento1,elemento2) {
 
 body.addEventListener('dblclick', (e) => {
     e.preventDefault()
+})
+
+input.addEventListener('keyup', (e) => {
+    const filtroBusqueda = productos.filter((producto) => {
+        return producto.nombre.toUpperCase().includes(e.target.value.toUpperCase())
+    })
+    prodsSection.innerHTML = ''
+    filtroBusqueda.forEach( (data) => {
+        console.log(data.nombre)
+        prodsSection.innerHTML +=
+                                    `
+                                    <article class="col-md-4 col-lg-3">
+                                    <div class="cards">
+                                        <div class="img">
+                                            <img src="${data.img}" alt="">
+                                        </div>
+                                        <h3 class="fuente text-center">${data.nombre}</h3>
+                                        <p class="fuente">$${data.precio}</p>
+                                        <p class="fuente">${data.litros}</p>
+                                        <div class="add">
+                                            <div class="cantidad">
+                                                <button class="button-container buttonSubtract" id="buttonSubtract" disabled>
+                                                    <i class="bi bi-dash-circle"></i>
+                                                </button>
+                                                <p class="cant" id="cantidad${data.id}">1</p>
+                                                <button class="button-container buttonAdd" id="buttonAdd">
+                                                    <i class="bi bi-plus-circle"></i>
+                                                </button>
+                                            </div>
+                                            <button class="noselect" id="noselect${data.id}">
+                                                <span class="text">Agregar</span>
+                                                <span class="icon">
+                                                    <i class="bi bi-cart-fill"></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </article>
+                                    `
+    })
 })

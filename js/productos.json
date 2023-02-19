@@ -2,113 +2,127 @@
     {
         "id": 1,
         "nombre": "Smirnoff Raspberry",
-        "precio": 900,
+        "precio": 1700,
         "litros": "750ml",
         "img": "./img/smf_21_685x1200.jpg"
     },
     {
         "id": 2,
         "nombre": "Smirnoff Citrus",
-        "precio": 700,
+        "precio": 1500,
         "litros": "750ml",
         "img": "https://www.espaciovino.com.ar/media/default/0001/58/thumb_57267_default_big.jpeg"
     },
     {
         "id": 3,
         "nombre": "Smirnoff Watermelon",
-        "precio": 900,
+        "precio": 1600,
         "litros": "750ml",
         "img": "https://www.vinosyspirits.com/media/catalog/product/s/m/smf_watermelon_685x1200.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=&width=&canvas=:"
     },
     {
         "id": 4,
-        "nombre": "Smirnoff Raspberry",
-        "precio": 900,
+        "nombre": "Bombay Sapphire",
+        "precio": 11000,
         "litros": "750ml",
-        "img": "./img/smf_21_685x1200.jpg"
+        "img": "https://http2.mlstatic.com/D_NQ_NP_823798-MLA49683860623_042022-O.webp"
     },
     {
         "id": 5,
-        "nombre": "Aboslut Mango",
-        "precio": 900,
+        "nombre": "Absolut Mango",
+        "precio": 3400,
         "litros": "750ml",
         "img": "https://www.absolut.com/globalassets/images/products/absolut-mango/absolut-mango_1000ml4x.jpg?imwidth=300"
     },
     {
         "id": 6,
-        "nombre": "Aboslut Elyx",
-        "precio": 700,
+        "nombre": "Absolut Elyx",
+        "precio": 10000,
         "litros": "1000ml",
         "img": "https://www.absolut.com/globalassets/images/products/absolut-elyx/absolut-elyx_1000ml4x.jpg?imwidth=300"
     },
     {
         "id": 7,
-        "nombre": "Aboslut Extrakt",
-        "precio": 900,
+        "nombre": "Absolut Extrakt",
+        "precio": 8500,
         "litros": "750ml",
         "img": "https://www.absolut.com/globalassets/images/products/absolut-extrakt/absolut-extrakt_1000ml4x.jpg?imwidth=300"
     },
     {
         "id": 8,
         "nombre": "Absolut Vanilia",
-        "precio": 900,
+        "precio": 5500,
         "litros": "750ml",
         "img": "https://www.absolut.com/globalassets/images/products/absolut-vanilia/absolut-vanilia_1000ml4x.jpg"
     },
     {
         "id": 9,
         "nombre": "Absolut Lime",
-        "precio": 900,
+        "precio": 5800,
         "litros": "750ml",
         "img": "https://www.absolut.com/globalassets/images/products/absolut-lime/absolut-lime_1000ml4x.jpg?imwidth=300"
     },
     {
         "id": 10,
-        "nombre": "Jack Daniel's Old No. 7",
-        "precio": 700,
+        "nombre": "Gin Merle London Dry",
+        "precio": 2100,
         "litros": "750ml",
-        "img": "./img/jack-daniels-old-750.webp"
+        "img": "https://http2.mlstatic.com/D_NQ_NP_954444-MLA50278032217_062022-O.webp"
     },
     {
         "id": 11,
         "nombre": "Fernet Branca",
-        "precio": 900,
+        "precio": 1500,
         "litros": "750ml",
         "img": "./img/fernetbranca.png"
     },
     {
         "id": 12,
-        "nombre": "Smirnoff Raspberry",
-        "precio": 900,
+        "nombre": "Absolut Vodka",
+        "precio": 3500,
         "litros": "750ml",
-        "img": "./img/smf_21_685x1200.jpg"
+        "img": "https://www.absolut.com/globalassets/images/products/absolut-vodka/atlas/atlas_absolut-vodka_1000ml_4x.jpg?imwidth=300"
     },
     {
         "id": 13,
-        "nombre": "Smirnoff Raspberry",
-        "precio": 900,
+        "nombre": "Absolut Apple",
+        "precio": 5400,
         "litros": "750ml",
-        "img": "./img/smf_21_685x1200.jpg"
+        "img": "https://www.absolut.com/globalassets/images/products/absolut-apple/absolut-apple_1000ml4x.jpg?imwidth=300"
     },
     {
         "id": 14,
-        "nombre": "Smirnoff Citrus",
-        "precio": 700,
-        "litros": "750ml",
-        "img": "https://www.espaciovino.com.ar/media/default/0001/58/thumb_57267_default_big.jpeg"
+        "nombre": "Absolut 100",
+        "precio": 15000,
+        "litros": "1000ml",
+        "img": "https://www.absolut.com/globalassets/images/products/absolut-100/absolut-100_1000ml4x.jpg"
     },
     {
         "id": 15,
-        "nombre": "Smirnoff Watermelon",
-        "precio": 900,
+        "nombre": "Whisky Jhonnie Walker",
+        "precio": 4500,
         "litros": "750ml",
-        "img": "https://www.vinosyspirits.com/media/catalog/product/s/m/smf_watermelon_685x1200.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=&width=&canvas=:"
+        "img": "https://http2.mlstatic.com/D_NQ_NP_697545-MLA49179817943_022022-O.webp"
     },
     {
         "id": 16,
-        "nombre": "Smirnoff Raspberry",
-        "precio": 900,
+        "nombre": "Smirnoff Green Apple",
+        "precio": 1800,
         "litros": "750ml",
-        "img": "./img/smf_21_685x1200.jpg"
+        "img": "https://http2.mlstatic.com/D_NQ_NP_876937-MLA31017675631_062019-O.webp"
+    },
+    {
+        "id": 17,
+        "nombre": "Sidra La Farruca",
+        "precio": 1300,
+        "litros": "750ml",
+        "img": "https://disario.cart.sig2k.com/img/p/2/3/6/9/2369-large_default.jpg"
+    },
+    {
+        "id": 18,
+        "nombre": "Sidra 1888 Rose",
+        "precio": 1900,
+        "litros": "750ml",
+        "img": "https://http2.mlstatic.com/D_NQ_NP_655432-MLA47431995657_092021-O.webp"
     }
 ]

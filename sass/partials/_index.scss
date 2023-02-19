@@ -37,6 +37,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding-bottom: 2rem;
     }
 
     .cards {
@@ -143,6 +144,10 @@
         .noselect:active .icon i {
             transform: scale(0.8);
         }
+    }
+
+    .div__input{
+        padding: 1rem 8rem;
     }
 }
 

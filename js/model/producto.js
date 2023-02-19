@@ -5,12 +5,13 @@ class Producto {
     litros;
 
     //Constructor
-    constructor(id, nombre, precio, litros)
+    constructor(id, nombre, precio, litros, img)
     {
         this.id = id
         this.nombre = nombre
         this.precio = parseFloat(precio)
         this.litros = litros
+        this.img = img
     }
 
     //metodos
