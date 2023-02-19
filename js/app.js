@@ -6,11 +6,55 @@ const tbody = document.getElementById('items')
 const trTotal = document.getElementById('trTotal');
 const btnVaciar = document.getElementById("vaciar")
 const body = document.getElementById("body")
+const prodsSection = document.getElementById("items") 
 
 let productos = []
 let carrito = []
 
-window.addEventListener('DOMContentLoaded', getAllProductsGetCarrito)
+
+window.addEventListener('DOMContentLoaded', getAllProductsGetCarritoJson)
+
+function getAllProductsGetCarritoJson(){
+    fetch("productos.json")
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data)
+        prodsSection.innerHTML = ''
+        data.forEach( (data) => {
+            prodsSection.innerHTML +=
+                                        `
+                                        <article class="col-md-4 col-lg-3">
+                                        <div class="cards">
+                                            <div class="img">
+                                                <img src="${data.img}" alt="">
+                                            </div>
+                                            <h3 class="fuente text-center">${data.nombre}</h3>
+                                            <p class="fuente">${data.precio}</p>
+                                            <p class="fuente">${data.litros}</p>
+                                            <div class="add">
+                                                <div class="cantidad">
+                                                    <button class="button-container buttonSubtract" id="buttonSubtract" disabled>
+                                                        <i class="bi bi-dash-circle"></i>
+                                                    </button>
+                                                    <p class="cant" id="cantidad${data.id}">1</p>
+                                                    <button class="button-container buttonAdd" id="buttonAdd">
+                                                        <i class="bi bi-plus-circle"></i>
+                                                    </button>
+                                                </div>
+                                                <button class="noselect" id="noselect${data.id}">
+                                                    <span class="text">Agregar</span>
+                                                    <span class="icon">
+                                                        <i class="bi bi-cart-fill"></i>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </article>
+                                        `
+        });
+        getAllProductsGetCarrito()
+    })
+}
 
 function getAllProductsGetCarrito() {
     getAllProducts()
