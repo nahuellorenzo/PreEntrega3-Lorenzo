@@ -147,7 +147,17 @@
     }
 
     .div__input{
-        padding: 1rem 8rem;
+        padding: 1rem 4rem;
+    }
+}
+
+.adver{
+    background: #bdf95d;
+    color: variables.$color-dark;
+    font-family: variables.$font-roboto;
+    button{
+        color: variables.$color-dark;
+        opacity: none;
     }
 }
 
@@ -167,4 +177,14 @@ img {
 
 .fuente {
     font-family: variables.$font-roboto;
+}
+
+
+/* DESKTOP */
+@media screen and (min-width: 1024px){
+    .main {
+        .div__input {
+            padding: 1rem 8rem;
+        }
+    }
 }

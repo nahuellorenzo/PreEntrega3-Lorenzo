@@ -91,8 +91,25 @@ function botonAgregarFuncionalidad(){
 
     for (const boton of agregar) {
         boton.addEventListener('click', (e) => {
-            setCarrito(encontrarElemento(e,"i","span"))
-            console.log(boton.parentNode.parentNode)
+            let prodEncontrado
+            let cant
+
+            elemEncontrado = encontrarElemento(e,"i","span")
+            cant = elemEncontrado.parentElement.querySelector('p').textContent
+            setCarrito(elemEncontrado)
+
+            productoAgregado = productos.find((producto) => { return producto.id === parseInt(elemEncontrado.dataset.id) })
+
+            Toastify({
+                text: `Se agregó ${cant} ${productoAgregado.nombre} al carrito`,
+                duration: 100000,
+                newWindow: true,
+                className: "adver",
+                close: true,
+                gravity: "bottom", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+            }).showToast();
         })
     }
 
