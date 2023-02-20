@@ -7,6 +7,7 @@ const prodsSection = document.getElementById("products")
 const input = document.getElementById("inputSearch")
 const pago = document.getElementById("pagar")
 const cierro = document.getElementById("cerrar")
+const cart = document.getElementById("carritoNav")
 
 let productos = []
 let carrito = []
@@ -79,9 +80,16 @@ function getAllProducts() {
 
 function getCarrito() {
     carrito = JSON.parse(localStorage.getItem('carrito'))
-    if (carrito === null) {
+    console.log(carrito)
+    if ((carrito === null) || (carrito.length === 0)) {
         carrito = []
     }
+    else
+    {
+        console.log("entre")
+        cart.textContent = carrito.reduce((acumulador, producto) => acumulador + producto.cantidad, 0); 
+    }
+
     agregarTabla()
 }
 
@@ -103,6 +111,17 @@ function botonAgregarFuncionalidad() {
 
             productoAgregado = productos.find((producto) => { return producto.id === parseInt(elemEncontrado.dataset.id) })
             console.log(productoAgregado)
+
+            console.log(cart.textContent)
+
+            if(cart.textContent === '')
+            {
+                cart.textContent = parseInt(cant)
+            }
+            else
+            {
+                cart.textContent = parseInt(cant) + parseInt(cart.textContent)
+            }
 
             Toastify({
                 text: `Se agregó ${cant} ${productoAgregado.nombre} al carrito`,
@@ -185,6 +204,15 @@ function agregarTabla() {
             console.log(num)
             carrito.splice(num, 1)
             localStorage.setItem('carrito', JSON.stringify(carrito))
+
+            if (carrito.length !== 0){
+                cart.textContent = carrito.reduce((acumulador, producto) => acumulador + producto.cantidad, 0); 
+            }
+            else
+            {
+                cart.textContent = ''
+            }
+
             agregarTabla()
         })
     }
@@ -231,6 +259,9 @@ btnVaciar.addEventListener('click', (e) => {
 function vaciarCarrito() {
     carrito.splice(0,)
     localStorage.setItem('carrito', JSON.stringify(carrito))
+
+    cart.textContent = ''
+
     agregarTabla()
 }
 
