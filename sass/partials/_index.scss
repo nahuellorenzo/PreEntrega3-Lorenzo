@@ -169,9 +169,16 @@
     }
 }
 
-.swal2-popup.swal2-modal.swal2-icon-warning.swal2-show, .swal2-popup.swal2-modal.swal2-icon-success.swal2-show{
+.swal2-popup.swal2-modal.swal2-icon-warning.swal2-show, .swal2-popup.swal2-modal.swal2-icon-success.swal2-show,
+.swal2-popup.swal2-modal.swal2-show{
     background-color: variables.$color-dark;
-    color: #bdf95d;
+    color: #adb5bd;
+    input{
+        border: solid 0.1px #adb5bd;
+    }
+    input::placeholder{
+        color: #adb5bd;
+    }
     button{
         color: variables.$color-dark;
     }
@@ -179,15 +186,14 @@
 
 .swal2-popup.swal2-modal.swal2-icon-error.swal2-show{
     background-color: variables.$color-dark;
-    color: #bdf95d;
+    color: #adb5bd;
     button{
         background-color: #f27474;
     }
 }
 
 .modal-content{
-    background-color: variables.$color-dark;
-    
+    background-color: variables.$color-dark;    
     .modal-footer{
         display: flex;
         flex-direction: row;
@@ -201,6 +207,15 @@ img {
 
 .fuente {
     font-family: variables.$font-roboto;
+}
+
+.swal2-popup.swal2-toast{
+    overflow-x: hidden;
+    background-color: variables.$color-dark;
+}
+
+.swal2-timer-progress-bar{
+    background-color: #bdf95d;
 }
 
 

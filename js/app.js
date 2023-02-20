@@ -5,6 +5,8 @@ const btnVaciar = document.getElementById("vaciar")
 const body = document.getElementById("body")
 const prodsSection = document.getElementById("products")
 const input = document.getElementById("inputSearch")
+const pago = document.getElementById("pagar")
+const cierro = document.getElementById("cerrar")
 
 let productos = []
 let carrito = []
@@ -104,7 +106,7 @@ function botonAgregarFuncionalidad() {
 
             Toastify({
                 text: `Se agregó ${cant} ${productoAgregado.nombre} al carrito`,
-                duration: 100000,
+                duration: 3000,
                 newWindow: true,
                 className: "adver",
                 close: true,
@@ -198,7 +200,7 @@ function agregarTabla() {
 
 btnVaciar.addEventListener('click', (e) => {
     e.preventDefault()
-    if (carrito.length !== 0){
+    if (carrito.length !== 0) {
         Swal.fire({
             title: 'Esta seguro que desea vaciar el carrito?',
             text: "No podras deshacer esta opcion!",
@@ -218,15 +220,19 @@ btnVaciar.addEventListener('click', (e) => {
                     icon: 'success',
                     background: 'rgb(11, 24, 40)',
                     confirmButtonColor: '#0d6efd'
-                    }
+                }
                 )
-                carrito.splice(0,)
-                localStorage.setItem('carrito', JSON.stringify(carrito))
-                agregarTabla()
+                vaciarCarrito()
             }
         })
     }
 })
+
+function vaciarCarrito() {
+    carrito.splice(0,)
+    localStorage.setItem('carrito', JSON.stringify(carrito))
+    agregarTabla()
+}
 
 function encontrarElemento(e, elemento1, elemento2) {
     if (e.target.localName === elemento1) {
@@ -245,6 +251,45 @@ function encontrarElemento(e, elemento1, elemento2) {
 
 body.addEventListener('dblclick', (e) => {
     e.preventDefault()
+})
+
+pago.addEventListener('click', (e) => {
+    e.preventDefault()
+    let monto = e.target.parentElement.parentElement.parentElement.querySelector('#trTotal').textContent.substring(6)
+    Swal.fire({
+        title: 'Segui tu compra via mail!',
+        text: `El monto a pagar es: ${monto}`,
+        input: "text",
+        inputPlaceholder: "Ingresa tu email...",
+        showCancelButton: true,
+        confirmButtonColor: '#0d6efd',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok',
+        cancelButtonText: "Cancelar"
+    }).then((result) => {
+        if (result.value) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                background: 'rgb(11, 24, 40)',
+                color: '#adb5bd',
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Mail enviado a ' + result.value
+            })
+
+            vaciarCarrito()
+        }
+    })
 })
 
 input.addEventListener('keyup', (e) => {
@@ -288,13 +333,12 @@ input.addEventListener('keyup', (e) => {
         })
         botonAgregarFuncionalidad()
     }
-    else
-    {
+    else {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'No se encontro ningun producto con ese nombre',
             footer: 'Prueba con otro nombre!'
-          })
+        })
     }
 })
