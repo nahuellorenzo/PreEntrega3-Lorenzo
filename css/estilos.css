@@ -126,6 +126,14 @@
 .main .div__input {
   padding: 1rem 4rem;
 }
+.main .div__input button {
+  background-color: #bdf95d;
+  color: rgb(11, 24, 40);
+  border: var(--bs-border-width) solid var(--bs-border-color);
+}
+.main .div__input button:hover {
+  background-color: #bdf95d;
+}
 
 .adver {
   background: #bdf95d;
@@ -135,6 +143,22 @@
 .adver button {
   color: rgb(11, 24, 40);
   opacity: none;
+}
+
+.swal2-popup.swal2-modal.swal2-icon-warning.swal2-show, .swal2-popup.swal2-modal.swal2-icon-success.swal2-show {
+  background-color: rgb(11, 24, 40);
+  color: #bdf95d;
+}
+.swal2-popup.swal2-modal.swal2-icon-warning.swal2-show button, .swal2-popup.swal2-modal.swal2-icon-success.swal2-show button {
+  color: rgb(11, 24, 40);
+}
+
+.swal2-popup.swal2-modal.swal2-icon-error.swal2-show {
+  background-color: rgb(11, 24, 40);
+  color: #bdf95d;
+}
+.swal2-popup.swal2-modal.swal2-icon-error.swal2-show button {
+  background-color: #f27474;
 }
 
 .modal-content {

@@ -3,7 +3,7 @@ const tbody = document.getElementById('items')
 const trTotal = document.getElementById('trTotal');
 const btnVaciar = document.getElementById("vaciar")
 const body = document.getElementById("body")
-const prodsSection = document.getElementById("products") 
+const prodsSection = document.getElementById("products")
 const input = document.getElementById("inputSearch")
 
 let productos = []
@@ -11,17 +11,17 @@ let carrito = []
 
 window.addEventListener('DOMContentLoaded', getAllProductsGetCarritoJson)
 
-function getAllProductsGetCarritoJson(){
+function getAllProductsGetCarritoJson() {
     fetch("./js/productos.json")
-    .then((response) => response.json())
-    .then((data) => {
-        console.log(data)
-        console.log(prodsSection)
-        prodsSection.innerHTML = ''
-        data.forEach( (data) => {
-            console.log(data.nombre)
-            prodsSection.innerHTML +=
-                                        `
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+            console.log(prodsSection)
+            prodsSection.innerHTML = ''
+            data.forEach((data) => {
+                console.log(data.nombre)
+                prodsSection.innerHTML +=
+                    `
                                         <article class="col-md-4 col-lg-3">
                                         <div class="cards">
                                             <div class="img">
@@ -40,7 +40,7 @@ function getAllProductsGetCarritoJson(){
                                                         <i class="bi bi-plus-circle"></i>
                                                     </button>
                                                 </div>
-                                                <button class="noselect" id="noselect${data.id}">
+                                                <button class="noselect" id="noselect${data.id}" data-id="${data.id}">
                                                     <span class="text">Agregar</span>
                                                     <span class="icon">
                                                         <i class="bi bi-cart-fill"></i>
@@ -50,9 +50,9 @@ function getAllProductsGetCarritoJson(){
                                         </div>
                                     </article>
                                         `
-        });
-        getAllProductsGetCarrito()
-    })
+            });
+            getAllProductsGetCarrito()
+        })
 }
 
 function getAllProductsGetCarrito() {
@@ -69,7 +69,7 @@ function getAllProducts() {
         let litros = card.querySelectorAll('p')[1].textContent
         let img = card.querySelector('img').src
         card.querySelector('.noselect').dataset.id = id
-        productos.push(new Producto(id, nombre, precio, litros,img))
+        productos.push(new Producto(id, nombre, precio, litros, img))
         id++
     }
     console.log(productos)
@@ -83,7 +83,7 @@ function getCarrito() {
     agregarTabla()
 }
 
-function botonAgregarFuncionalidad(){
+function botonAgregarFuncionalidad() {
 
     const btnAgregarCant = document.querySelectorAll('.buttonAdd')
     const btnSacarCant = document.querySelectorAll('.buttonSubtract')
@@ -93,12 +93,14 @@ function botonAgregarFuncionalidad(){
         boton.addEventListener('click', (e) => {
             let elemEncontrado
             let cant
+            let productoAgregado
 
-            elemEncontrado = encontrarElemento(e,"i","span")
+            elemEncontrado = encontrarElemento(e, "i", "span")
             cant = elemEncontrado.parentElement.querySelector('p').textContent
             setCarrito(elemEncontrado)
 
             productoAgregado = productos.find((producto) => { return producto.id === parseInt(elemEncontrado.dataset.id) })
+            console.log(productoAgregado)
 
             Toastify({
                 text: `Se agregó ${cant} ${productoAgregado.nombre} al carrito`,
@@ -133,6 +135,7 @@ function botonAgregarFuncionalidad(){
 function setCarrito(e) {
     console.log(e)
     let id = e.dataset.id
+    console.log(id)
     let cant = e.parentElement.querySelector('p').textContent
 
     const prod = productos.find((producto) => { return producto.id === parseInt(id) })
@@ -173,7 +176,7 @@ function agregarTabla() {
 
     for (const button of buttones) {
         button.addEventListener('click', (e) => {
-            elem = encontrarElemento(e,"path","svg")
+            elem = encontrarElemento(e, "path", "svg")
             id = elem.dataset.id
             console.log(id)
             let num = carrito.indexOf(carrito.find((producto) => { return producto.producto.id === parseInt(id) }))
@@ -195,23 +198,49 @@ function agregarTabla() {
 
 btnVaciar.addEventListener('click', (e) => {
     e.preventDefault()
-    carrito.splice(0,)
-    localStorage.setItem('carrito', JSON.stringify(carrito))
-    agregarTabla()
+    if (carrito.length !== 0){
+        Swal.fire({
+            title: 'Esta seguro que desea vaciar el carrito?',
+            text: "No podras deshacer esta opcion!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#0d6efd',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, vacialo!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    customClass: {
+                        confirmButton: 'btn btn-success',
+                    },
+                    title: 'Vaciado!',
+                    text: "Tu carrito ha sido vaciado",
+                    icon: 'success',
+                    background: 'rgb(11, 24, 40)',
+                    confirmButtonColor: '#0d6efd'
+                    }
+                )
+                carrito.splice(0,)
+                localStorage.setItem('carrito', JSON.stringify(carrito))
+                agregarTabla()
+            }
+        })
+    }
 })
 
-function encontrarElemento(e,elemento1,elemento2) {
-    if (e.target.localName === elemento1){
+function encontrarElemento(e, elemento1, elemento2) {
+    if (e.target.localName === elemento1) {
         console.log(e)
         return e.target.parentElement.parentElement
-    } 
-    else if (e.target.localName === elemento2){
+    }
+    else if (e.target.localName === elemento2) {
         console.log(e)
         return e.target.parentElement
-    } 
-    else{
-        console.log(e) 
-        return e.target}
+    }
+    else {
+        console.log(e)
+        return e.target
+    }
 }
 
 body.addEventListener('dblclick', (e) => {
@@ -222,39 +251,50 @@ input.addEventListener('keyup', (e) => {
     const filtroBusqueda = productos.filter((producto) => {
         return producto.nombre.toUpperCase().includes(e.target.value.toUpperCase())
     })
-    prodsSection.innerHTML = ''
-    filtroBusqueda.forEach( (data) => {
-        console.log(data.nombre)
-        prodsSection.innerHTML +=
-                                    `
-                                    <article class="col-md-4 col-lg-3">
-                                    <div class="cards">
-                                        <div class="img">
-                                            <img src="${data.img}" alt="">
-                                        </div>
-                                        <h3 class="fuente text-center">${data.nombre}</h3>
-                                        <p class="fuente">$${data.precio}</p>
-                                        <p class="fuente">${data.litros}</p>
-                                        <div class="add">
-                                            <div class="cantidad">
-                                                <button class="button-container buttonSubtract" id="buttonSubtract" disabled>
-                                                    <i class="bi bi-dash-circle"></i>
-                                                </button>
-                                                <p class="cant" id="cantidad${data.id}">1</p>
-                                                <button class="button-container buttonAdd" id="buttonAdd">
-                                                    <i class="bi bi-plus-circle"></i>
-                                                </button>
-                                            </div>
-                                            <button class="noselect" id="noselect${data.id}">
-                                                <span class="text">Agregar</span>
-                                                <span class="icon">
-                                                    <i class="bi bi-cart-fill"></i>
-                                                </span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </article>
-                                    `
-    })
-    botonAgregarFuncionalidad()
+
+    if (filtroBusqueda.length !== 0) {
+        prodsSection.innerHTML = ''
+        filtroBusqueda.forEach((data) => {
+            prodsSection.innerHTML +=
+                `
+                    <article class="col-md-4 col-lg-3">
+                        <div class="cards">
+                            <div class="img">
+                                <img src="${data.img}" alt="">
+                            </div>
+                            <h3 class="fuente text-center">${data.nombre}</h3>
+                            <p class="fuente">$${data.precio}</p>
+                            <p class="fuente">${data.litros}</p>
+                            <div class="add">
+                                <div class="cantidad">
+                                    <button class="button-container buttonSubtract" id="buttonSubtract" disabled>
+                                        <i class="bi bi-dash-circle"></i>
+                                    </button>
+                                    <p class="cant" id="cantidad${data.id}">1</p>
+                                    <button class="button-container buttonAdd" id="buttonAdd">
+                                        <i class="bi bi-plus-circle"></i>
+                                    </button>
+                                </div>
+                                <button class="noselect" id="noselect${data.id}" data-id="${data.id}">
+                                    <span class="text">Agregar</span>
+                                    <span class="icon">
+                                        <i class="bi bi-cart-fill"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                `
+        })
+        botonAgregarFuncionalidad()
+    }
+    else
+    {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'No se encontro ningun producto con ese nombre',
+            footer: 'Prueba con otro nombre!'
+          })
+    }
 })

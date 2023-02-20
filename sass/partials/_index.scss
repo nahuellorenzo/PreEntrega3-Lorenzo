@@ -148,6 +148,14 @@
 
     .div__input{
         padding: 1rem 4rem;
+        button{
+            background-color: #bdf95d;
+            color: variables.$color-dark;
+            border: var(--bs-border-width) solid var(--bs-border-color);
+            &:hover{
+                background-color: #bdf95d;
+            }
+        }
     }
 }
 
@@ -158,6 +166,22 @@
     button{
         color: variables.$color-dark;
         opacity: none;
+    }
+}
+
+.swal2-popup.swal2-modal.swal2-icon-warning.swal2-show, .swal2-popup.swal2-modal.swal2-icon-success.swal2-show{
+    background-color: variables.$color-dark;
+    color: #bdf95d;
+    button{
+        color: variables.$color-dark;
+    }
+}
+
+.swal2-popup.swal2-modal.swal2-icon-error.swal2-show{
+    background-color: variables.$color-dark;
+    color: #bdf95d;
+    button{
+        background-color: #f27474;
     }
 }
 
