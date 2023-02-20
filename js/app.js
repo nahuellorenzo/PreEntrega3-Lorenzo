@@ -1,4 +1,3 @@
-const agregar = document.getElementsByClassName('noselect')
 const cards = document.getElementsByClassName('cards')
 const tbody = document.getElementById('items')
 const trTotal = document.getElementById('trTotal');
@@ -88,10 +87,11 @@ function botonAgregarFuncionalidad(){
 
     const btnAgregarCant = document.querySelectorAll('.buttonAdd')
     const btnSacarCant = document.querySelectorAll('.buttonSubtract')
+    const agregar = document.getElementsByClassName('noselect')
 
     for (const boton of agregar) {
         boton.addEventListener('click', (e) => {
-            let prodEncontrado
+            let elemEncontrado
             let cant
 
             elemEncontrado = encontrarElemento(e,"i","span")
@@ -256,4 +256,5 @@ input.addEventListener('keyup', (e) => {
                                 </article>
                                     `
     })
+    botonAgregarFuncionalidad()
 })
